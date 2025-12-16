@@ -205,8 +205,14 @@ if not MODEL_PATH.exists():
 if not ENCODER_PATH.exists():
     raise RuntimeError(f"Label encoder not found at {ENCODER_PATH}")
 
-model = joblib.load(MODEL_PATH)
-label_encoder = joblib.load(ENCODER_PATH)
+model = None
+label_encoder = None
+
+@app.on_event("startup")
+def load_artifacts():
+    global model, label_encoder
+    model = joblib.load(MODEL_PATH)
+    label_encoder = joblib.load(ENCODER_PATH)
 
 # ==============================================================================
 # FastAPI app

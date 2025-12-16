@@ -3,6 +3,7 @@ uvicorn[standard]
 pandas==2.2.2
 scikit-learn==1.6.1
 joblib==1.5.2
-xgboost==3.1.2
+xgboost-cpu==2.0.3
+
 lightgbm==4.6.0
 pydantic==2.12.3
