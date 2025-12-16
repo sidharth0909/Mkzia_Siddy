@@ -58,7 +58,7 @@ housing_app_fall25_Siddy/
 │
 ├── data/
 │ ├── housing.db # Normalized SQLite DB
-│ ├── data_schema.json # UI schema
+│ └── data_schema.json # UI schema
 │
 ├── models/
 │ ├── final_xgb_classifier.pkl
