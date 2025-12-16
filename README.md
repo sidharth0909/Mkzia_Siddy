@@ -68,11 +68,6 @@ housing_app_fall25_Siddy/
 ├── requirements.txt
 └── README.md
 
-pgsql
-Copy code
-
----
-
 ## 🗄️ Database Design (3NF)
 
 The raw dataset was normalized into **Third Normal Form (3NF)**.
