@@ -186,9 +186,9 @@
 from fastapi import FastAPI, HTTPException
 from pydantic import BaseModel
 from typing import List
+from pathlib import Path
 import joblib
 import pandas as pd
-from pathlib import Path
 
 # ==============================================================================
 # Paths (Docker-safe)
@@ -200,10 +200,10 @@ ENCODER_PATH = Path("/app/models/label_encoder.pkl")
 # Load model + label encoder
 # ==============================================================================
 if not MODEL_PATH.exists():
-    raise FileNotFoundError(f"Model not found at {MODEL_PATH}")
+    raise RuntimeError(f"Model not found at {MODEL_PATH}")
 
 if not ENCODER_PATH.exists():
-    raise FileNotFoundError(f"Label encoder not found at {ENCODER_PATH}")
+    raise RuntimeError(f"Label encoder not found at {ENCODER_PATH}")
 
 model = joblib.load(MODEL_PATH)
 label_encoder = joblib.load(ENCODER_PATH)
@@ -218,7 +218,7 @@ app = FastAPI(
 )
 
 # ==============================================================================
-# Health check (REQUIRED for Docker)
+# Health check (REQUIRED for Docker & Cloud)
 # ==============================================================================
 @app.get("/health")
 def health():
@@ -267,13 +267,13 @@ def predict(request: PredictionRequest):
         raise HTTPException(status_code=400, detail="No instances provided")
 
     try:
-        # Convert request to DataFrame
+        # Convert input to DataFrame
         df = pd.DataFrame([x.model_dump() for x in request.instances])
 
         # Predict encoded labels
         preds_encoded = model.predict(df)
 
-        # Decode to original labels
+        # Decode labels
         preds_decoded = label_encoder.inverse_transform(preds_encoded)
 
         return {
