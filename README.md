@@ -99,7 +99,7 @@ JOIN price_class pc ON pc.price_class_id = s.price_class_id;
 ✔ No redundancy
 ✔ Referential integrity
 ✔ Efficient querying
-
+```
 📊 Exploratory Data Analysis (EDA)
 Key Observations
 Target classes are perfectly balanced
@@ -127,7 +127,7 @@ Distribution plots
 A stratified split was used to preserve class balance.
 
 matlab
-Copy code
+ 
 Train:
 LOW       ~33.35%
 MEDIUM    ~33.32%
@@ -158,12 +158,12 @@ LightGBM	0.81
 🏆 Final Model – XGBoost
 Performance
 yaml
-Copy code
+ 
 Accuracy: 0.82
 Macro F1: 0.82
 Classification Report
 java
-Copy code
+ 
 HIGH    F1 = 0.86
 LOW     F1 = 0.86
 MEDIUM  F1 = 0.75
@@ -186,7 +186,7 @@ GET /health
 
 Example Request
 json
-Copy code
+ 
 {
   "instances": [
     {
@@ -204,7 +204,7 @@ Copy code
 }
 Example Response
 json
-Copy code
+ 
 {
   "predictions": ["HIGH"]
 }
@@ -218,12 +218,12 @@ Real-time predictions
 Access locally:
 
 arduino
-Copy code
+ 
 http://localhost:8501
 🐳 Docker Deployment
 Run Locally
 bash
-Copy code
+ 
 docker compose up -d
 Services
 Service	Port
@@ -244,32 +244,32 @@ No code changes required.
 📤 How to Push This Project to GitHub (STEP-BY-STEP)
 1️⃣ Go inside the project folder
 bash
-Copy code
+ 
 cd housing_app_fall25_Siddy
 2️⃣ Initialize Git (if needed)
 bash
-Copy code
+ 
 git init
 3️⃣ Add your fork as remote (check first)
 bash
-Copy code
+ 
 git remote -v
 If not present:
 
 bash
-Copy code
+ 
 git remote add origin https://github.com/YOUR_USERNAME/YOUR_REPO.git
 4️⃣ Add files
 bash
-Copy code
+ 
 git add .
 5️⃣ Commit changes
 bash
-Copy code
+ 
 git commit -m "Final EAS 503 Housing Price Classification Project"
 6️⃣ Push to GitHub
 bash
-Copy code
+ 
 git branch -M main
 git push -u origin main
 🎤 Presentation (12–15 Minutes)
