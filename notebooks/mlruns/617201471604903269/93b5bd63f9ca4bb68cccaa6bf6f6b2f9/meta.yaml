@@ -1,0 +1,15 @@
+artifact_uri: file:///c:/Users/ASSUS/Final_project_MkZia/housing_app_fall25_Siddy/notebooks/mlruns/617201471604903269/93b5bd63f9ca4bb68cccaa6bf6f6b2f9/artifacts
+end_time: 1765871621718
+entry_point_name: ''
+experiment_id: '617201471604903269'
+lifecycle_stage: active
+run_id: 93b5bd63f9ca4bb68cccaa6bf6f6b2f9
+run_name: histgradientboosting_with_pca_optuna
+run_uuid: 93b5bd63f9ca4bb68cccaa6bf6f6b2f9
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1765871616676
+status: 3
+tags: []
+user_id: ASSUS

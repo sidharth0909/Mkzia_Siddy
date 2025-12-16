@@ -1,0 +1,14 @@
+aliases: []
+creation_timestamp: 1765871612208
+current_stage: None
+description: null
+last_updated_timestamp: 1765871612208
+name: ridge_pipeline_with_pca_optuna
+run_id: 608d5035555645b581a21022e61785f4
+run_link: null
+source: file:///c:/Users/ASSUS/Final_project_MkZia/housing_app_fall25_Siddy/notebooks/mlruns/617201471604903269/608d5035555645b581a21022e61785f4/artifacts/housing_model_with_pca
+status: READY
+status_message: null
+storage_location: file:///c:/Users/ASSUS/Final_project_MkZia/housing_app_fall25_Siddy/notebooks/mlruns/617201471604903269/608d5035555645b581a21022e61785f4/artifacts/housing_model_with_pca
+user_id: null
+version: 1

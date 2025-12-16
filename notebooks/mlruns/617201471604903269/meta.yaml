@@ -1,0 +1,6 @@
+artifact_location: file:///c:/Users/ASSUS/Final_project_MkZia/housing_app_fall25_Siddy/notebooks/mlruns/617201471604903269
+creation_time: 1765871539221
+experiment_id: '617201471604903269'
+last_update_time: 1765871539221
+lifecycle_stage: active
+name: median_house_pricing_multi_model_optuna

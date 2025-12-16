@@ -1,0 +1,14 @@
+aliases: []
+creation_timestamp: 1765871562913
+current_stage: None
+description: null
+last_updated_timestamp: 1765871562913
+name: ridge_pipeline_optuna
+run_id: f84525c5b4f64fc581f96449ddbbe727
+run_link: null
+source: file:///c:/Users/ASSUS/Final_project_MkZia/housing_app_fall25_Siddy/notebooks/mlruns/617201471604903269/f84525c5b4f64fc581f96449ddbbe727/artifacts/housing_model
+status: READY
+status_message: null
+storage_location: file:///c:/Users/ASSUS/Final_project_MkZia/housing_app_fall25_Siddy/notebooks/mlruns/617201471604903269/f84525c5b4f64fc581f96449ddbbe727/artifacts/housing_model
+user_id: null
+version: 1

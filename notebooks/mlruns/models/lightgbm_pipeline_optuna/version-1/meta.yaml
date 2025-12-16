@@ -1,0 +1,14 @@
+aliases: []
+creation_timestamp: 1765871605519
+current_stage: None
+description: null
+last_updated_timestamp: 1765871605519
+name: lightgbm_pipeline_optuna
+run_id: db89f28995fc4eae9a2630942fac8043
+run_link: null
+source: file:///c:/Users/ASSUS/Final_project_MkZia/housing_app_fall25_Siddy/notebooks/mlruns/617201471604903269/db89f28995fc4eae9a2630942fac8043/artifacts/housing_model
+status: READY
+status_message: null
+storage_location: file:///c:/Users/ASSUS/Final_project_MkZia/housing_app_fall25_Siddy/notebooks/mlruns/617201471604903269/db89f28995fc4eae9a2630942fac8043/artifacts/housing_model
+user_id: null
+version: 1

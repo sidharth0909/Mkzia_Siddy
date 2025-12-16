@@ -1,0 +1,14 @@
+aliases: []
+creation_timestamp: 1765871650263
+current_stage: None
+description: null
+last_updated_timestamp: 1765871650263
+name: lightgbm_pipeline_with_pca_optuna
+run_id: 6952d9406e6b4107b5a2d970d95e3ac1
+run_link: null
+source: file:///c:/Users/ASSUS/Final_project_MkZia/housing_app_fall25_Siddy/notebooks/mlruns/617201471604903269/6952d9406e6b4107b5a2d970d95e3ac1/artifacts/housing_model_with_pca
+status: READY
+status_message: null
+storage_location: file:///c:/Users/ASSUS/Final_project_MkZia/housing_app_fall25_Siddy/notebooks/mlruns/617201471604903269/6952d9406e6b4107b5a2d970d95e3ac1/artifacts/housing_model_with_pca
+user_id: null
+version: 1
