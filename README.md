@@ -92,13 +92,17 @@ housing_app_fall25_Siddy/
 - Docker Compose
 - Git
 
+---
+
 ### Clone Repository
 ```bash
 git clone https://github.com/sidharth0909/Mkzia_Siddy.git
 cd housing_app_fall25_Siddy
 ```
 
-##▶️ Running the Application (Local)
+---
+
+## ▶️ Running the Application (Local)
 
 Start the full application using Docker:
 ```bash
@@ -109,19 +113,25 @@ Streamlit UI: http://localhost:8501
 FastAPI Docs: http://localhost:8000/docs
 Health Check: http://localhost:8000/health
 
-##API USAGE
+## API USAGE
 ```bash
 POST /predict
 ```
 
-##🖥️ Streamlit UI
+---
+
+
+## 🖥️ Streamlit UI
 
 The Streamlit app:
 Automatically loads feature ranges from data_schema.json
 Allows real-time prediction via the FastAPI backend
 Displays predicted price class clearly
 
-##🧰 Technologies Used
+---
+
+
+## 🧰 Technologies Used
 Python
 Scikit-learn
 XGBoost
@@ -133,7 +143,10 @@ Docker & Docker Compose
 MLflow
 Pandas & NumPy
 
-##🧑‍🏫 Academic Requirements Covered
+---
+
+
+## 🧑‍🏫 Academic Requirements Covered
 
 ✔ Database normalization (3NF)
 ✔ SQL JOIN queries
@@ -145,17 +158,26 @@ Pandas & NumPy
 ✔ API + UI
 ✔ Docker deployment
 
-##🤝 Contributing
+---
+
+
+## 🤝 Contributing
 
 Pull requests are welcome.
 For major changes, please open an issue first to discuss what you would like to change.
 
-##📄 License
+---
+
+
+## 📄 License
 
 This project is intended for academic use as part of EAS 503.
 Reuse is permitted with proper attribution.
 
-##👤 Author
+---
+
+
+## 👤 Author
 
 Sidharth Saholiya
 University at Buffalo
