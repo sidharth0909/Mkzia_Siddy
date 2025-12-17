@@ -191,19 +191,23 @@
 # )
 
 import json
-import os
 from pathlib import Path
 from typing import Dict, Any
+
 import requests
 import streamlit as st
 
+# ------------------------------------------------------------------------------
+# Page config
+# ------------------------------------------------------------------------------
 st.set_page_config(page_title="Housing Price Classifier", page_icon="🏠")
 
 # ------------------------------------------------------------------------------
-# Paths
+# Paths (Streamlit Cloud safe)
 # ------------------------------------------------------------------------------
-SCHEMA_PATH = Path("/app/data/data_schema.json")
-API_URL = os.getenv("API_URL", "http://localhost:8000")
+SCHEMA_PATH = Path("housing_app_fall25_Siddy/data/data_schema.json")
+
+API_URL = "https://housing-api-eeu9.onrender.com"
 PREDICT_URL = f"{API_URL}/predict"
 
 # ------------------------------------------------------------------------------
@@ -234,10 +238,10 @@ st.subheader("Numerical Inputs")
 
 for feature, stats in numerical.items():
     user_input[feature] = st.slider(
-        feature.replace("_", " ").title(),
-        float(stats["min"]),
-        float(stats["max"]),
-        float(stats["median"]),
+        label=feature.replace("_", " ").title(),
+        min_value=float(stats["min"]),
+        max_value=float(stats["max"]),
+        value=float(stats["median"]),
     )
 
 # ------------------------------------------------------------------------------
@@ -261,11 +265,14 @@ if st.button("🔮 Predict Price Class"):
     payload = {"instances": [user_input]}
 
     with st.spinner("Calling model..."):
-        res = requests.post(PREDICT_URL, json=payload)
-
-        if res.status_code != 200:
-            st.error(res.text)
+        try:
+            res = requests.post(PREDICT_URL, json=payload, timeout=30)
+        except requests.exceptions.RequestException as e:
+            st.error(f"API call failed: {e}")
         else:
-            pred = res.json()["predictions"][0]
-            st.success(f"🏷️ Predicted Price Class: **{pred}**")
-            st.json(user_input)
+            if res.status_code != 200:
+                st.error(res.text)
+            else:
+                pred = res.json()["predictions"][0]
+                st.success(f"🏷️ Predicted Price Class: **{pred}**")
+                st.json(user_input)
