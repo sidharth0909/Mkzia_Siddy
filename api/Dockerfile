@@ -2,12 +2,11 @@ FROM python:3.12-slim
 
 WORKDIR /app
 
-# System dependencies
 RUN apt-get update && \
     apt-get install -y --no-install-recommends libgomp1 curl && \
     rm -rf /var/lib/apt/lists/*
 
-# Python dependencies
+# Install dependencies
 COPY api/requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
 
@@ -15,7 +14,7 @@ RUN pip install --no-cache-dir -r requirements.txt
 COPY api/app.py .
 COPY api/housing_pipeline.py .
 
-# 🔥 COPY MODELS INTO IMAGE
+# ✅ COPY MODELS (THIS WILL NOW WORK)
 COPY models /app/models
 
 EXPOSE 8000
