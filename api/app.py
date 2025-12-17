@@ -191,31 +191,7 @@ import joblib
 import pandas as pd
 
 # ==============================================================================
-# Paths (Docker-safe)
-# ==============================================================================
-MODEL_PATH = Path("/app/models/final_xgb_classifier.pkl")
-ENCODER_PATH = Path("/app/models/label_encoder.pkl")
-
-# ==============================================================================
-# Load model + label encoder
-# ==============================================================================
-if not MODEL_PATH.exists():
-    raise RuntimeError(f"Model not found at {MODEL_PATH}")
-
-if not ENCODER_PATH.exists():
-    raise RuntimeError(f"Label encoder not found at {ENCODER_PATH}")
-
-model = None
-label_encoder = None
-
-@app.on_event("startup")
-def load_artifacts():
-    global model, label_encoder
-    model = joblib.load(MODEL_PATH)
-    label_encoder = joblib.load(ENCODER_PATH)
-
-# ==============================================================================
-# FastAPI app
+# FastAPI app (MUST COME FIRST)
 # ==============================================================================
 app = FastAPI(
     title="California Housing Price Classifier",
@@ -224,7 +200,37 @@ app = FastAPI(
 )
 
 # ==============================================================================
-# Health check (REQUIRED for Docker & Cloud)
+# Paths (Docker-safe)
+# ==============================================================================
+MODEL_PATH = Path("/app/models/final_xgb_classifier.pkl")
+ENCODER_PATH = Path("/app/models/label_encoder.pkl")
+
+# ==============================================================================
+# Globals (loaded at startup)
+# ==============================================================================
+model = None
+label_encoder = None
+
+# ==============================================================================
+# Startup event (load artifacts once container starts)
+# ==============================================================================
+@app.on_event("startup")
+def load_artifacts():
+    global model, label_encoder
+
+    if not MODEL_PATH.exists():
+        raise RuntimeError(f"Model not found at {MODEL_PATH}")
+
+    if not ENCODER_PATH.exists():
+        raise RuntimeError(f"Label encoder not found at {ENCODER_PATH}")
+
+    model = joblib.load(MODEL_PATH)
+    label_encoder = joblib.load(ENCODER_PATH)
+
+    print("✅ Model and label encoder loaded successfully")
+
+# ==============================================================================
+# Health check (REQUIRED for Docker & Render)
 # ==============================================================================
 @app.get("/health")
 def health():
@@ -263,7 +269,6 @@ class PredictionResponse(BaseModel):
     predictions: List[str]
     count: int
 
-
 # ==============================================================================
 # Prediction endpoint
 # ==============================================================================
@@ -273,13 +278,9 @@ def predict(request: PredictionRequest):
         raise HTTPException(status_code=400, detail="No instances provided")
 
     try:
-        # Convert input to DataFrame
         df = pd.DataFrame([x.model_dump() for x in request.instances])
 
-        # Predict encoded labels
         preds_encoded = model.predict(df)
-
-        # Decode labels
         preds_decoded = label_encoder.inverse_transform(preds_encoded)
 
         return {
